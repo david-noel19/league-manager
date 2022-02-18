@@ -5,19 +5,24 @@ export class initDb1611089925984 implements MigrationInterface {
     // await queryRunner.query(
     //     "CREATE USER apiuser WITH PASSWORD '';"
     // );
-    await queryRunner.query('GRANT connect ON DATABASE vitals TO apiuser;');
-    await queryRunner.query('CREATE SCHEMA IF NOT EXISTS vital;');
+    await queryRunner.query('GRANT connect ON DATABASE leagues TO apiuser;');
+    await queryRunner.query('CREATE SCHEMA IF NOT EXISTS member;');
+    await queryRunner.query('CREATE SCHEMA IF NOT EXISTS person;');
+    await queryRunner.query('CREATE SCHEMA IF NOT EXISTS team;');
+    await queryRunner.query('CREATE SCHEMA IF NOT EXISTS match;');
+    await queryRunner.query('CREATE SCHEMA IF NOT EXISTS staff;');
     await queryRunner.query('CREATE SCHEMA IF NOT EXISTS audit;');
-    await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";');
     await queryRunner.query(
-      'ALTER ROLE apiuser SET search_path TO public, vital, audit;',
-    );
-    await queryRunner.query('GRANT USAGE ON SCHEMA public, vital, audit TO apiuser;');
-    await queryRunner.query(
-      'alter default privileges in schema public, vital, audit grant all on tables to apiuser;',
+      'ALTER ROLE apiuser SET search_path TO public, league, audit;',
     );
     await queryRunner.query(
-      'alter default privileges in schema public, vital, audit grant all on sequences to apiuser;',
+      'GRANT USAGE ON SCHEMA public, league, audit TO apiuser;',
+    );
+    await queryRunner.query(
+      'alter default privileges in schema public, league, audit grant all on tables to apiuser;',
+    );
+    await queryRunner.query(
+      'alter default privileges in schema public, league, audit grant all on sequences to apiuser;',
     );
   }
 
