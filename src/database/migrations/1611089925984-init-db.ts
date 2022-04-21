@@ -2,7 +2,6 @@ import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class initDb1611089925984 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<any> {
-
     await queryRunner.query('GRANT connect ON DATABASE leagues TO apiuser;');
     await queryRunner.query('CREATE SCHEMA IF NOT EXISTS leaguemanager;');
     await queryRunner.query('CREATE SCHEMA IF NOT EXISTS person;');

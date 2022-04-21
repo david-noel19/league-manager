@@ -9,6 +9,21 @@ export class initTables1611161705322 implements MigrationInterface {
     );
     await queryRunner.createTable(
       new Table({
+        name: 'member',
+        columns: [
+          {
+            name: 'team_id',
+            type: 'uuid',
+            isPrimary: true,
+            isGenerated: true,
+            generationStrategy: 'uuid',
+          },
+          { name: 'stats', type: 'JSON', isNullable: false },
+        ],
+      }),
+    );
+    await queryRunner.createTable(
+      new Table({
         name: 'person',
         columns: [
           {
@@ -21,6 +36,33 @@ export class initTables1611161705322 implements MigrationInterface {
           { name: 'name', type: 'character varying', isNullable: false },
           { name: 'last_name', type: 'string', isNullable: false },
           { name: 'phone', type: 'number', isNullable: false },
+          { name: 'email', type: 'string', isNullable: false },
+          { name: 'dob', type: 'string', isNullable: false },
+          { name: 'role', type: 'string', isNullable: false },
+          { name: 'status', type: 'string', isNullable: false },
+          { name: 'age', type: 'number', isNullable: false },
+        ],
+      }),
+    );
+    await queryRunner.createTable(
+      new Table({
+        name: 'team',
+        columns: [
+          {
+            name: 'id',
+            type: 'uuid',
+            isPrimary: true,
+            isGenerated: true,
+            generationStrategy: 'uuid',
+          },
+          { name: 'name', type: 'string', isNullable: false },
+          { name: 'coach', type: 'uuid', isNullable: false },
+          { name: 'phone', type: 'number', isNullable: false },
+          { name: 'email', type: 'string', isNullable: false },
+          { name: 'dob', type: 'string', isNullable: false },
+          { name: 'role', type: 'string', isNullable: false },
+          { name: 'status', type: 'string', isNullable: false },
+          { name: 'age', type: 'number', isNullable: false },
         ],
       }),
     );
