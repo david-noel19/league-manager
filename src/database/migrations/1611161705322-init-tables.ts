@@ -44,27 +44,8 @@ export class initTables1611161705322 implements MigrationInterface {
         ],
       }),
     );
-    await queryRunner.createTable(
-      new Table({
-        name: 'team',
-        columns: [
-          {
-            name: 'id',
-            type: 'uuid',
-            isPrimary: true,
-            isGenerated: true,
-            generationStrategy: 'uuid',
-          },
-          { name: 'name', type: 'string', isNullable: false },
-          { name: 'coach', type: 'uuid', isNullable: false },
-          { name: 'phone', type: 'number', isNullable: false },
-          { name: 'email', type: 'string', isNullable: false },
-          { name: 'dob', type: 'string', isNullable: false },
-          { name: 'role', type: 'string', isNullable: false },
-          { name: 'status', type: 'string', isNullable: false },
-          { name: 'age', type: 'number', isNullable: false },
-        ],
-      }),
+    await queryRunner.query(
+      `CREATE TABLE "team" ("name" varchar NOT NULL, "coach" varchar NOT NULL, "captain" varchar, status enum ("active", "inactive"))`,
     );
   }
 
