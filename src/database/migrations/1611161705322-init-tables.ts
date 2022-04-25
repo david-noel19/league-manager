@@ -4,9 +4,6 @@ export class initTables1611161705322 implements MigrationInterface {
   name = 'initTables1611161705322';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(
-      `CREATE TABLE "audit"."audit-trail" ("id" uuid NOT NULL, "organization_id" uuid, "entity_name" character varying NOT NULL, "action" character varying NOT NULL, "new_value" jsonb, "modified_at" TIMESTAMP NOT NULL, "modified_by" uuid, "metadata" jsonb, CONSTRAINT "PK_b87bd9fcda5887acd7f2d3848f6" PRIMARY KEY ("id"))`,
-    );
     await queryRunner.createTable(
       new Table({
         name: 'member',
@@ -46,6 +43,9 @@ export class initTables1611161705322 implements MigrationInterface {
     );
     await queryRunner.query(
       `CREATE TABLE "team" ("name" varchar NOT NULL, "coach" varchar NOT NULL, "captain" varchar, status enum ("active", "inactive"))`,
+    );
+    await queryRunner.query(
+      `CREATE TABLE "match" ("id" uuid NOT NULL, "home" uuid NOT NULL, "away" uuid NOT NULL, "home_score" int NOT NULL, "away_score" int NOT NULL, "played" timestamp NOT NULL, "location" varchar NOT NULL)`,
     );
   }
 
