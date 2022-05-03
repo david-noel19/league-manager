@@ -6,13 +6,16 @@ export class initDb1611089925984 implements MigrationInterface {
     await queryRunner.query('CREATE SCHEMA IF NOT EXISTS leaguemanager;');
     await queryRunner.query(`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`);
     await queryRunner.query(
-      'ALTER ROLE apiuser SET search_path TO public, league;',
+      'ALTER ROLE apiuser SET search_path TO public, leaguemanager;',
     );
     await queryRunner.query(
       'GRANT USAGE ON SCHEMA public, leaguemanager TO apiuser;',
     );
     await queryRunner.query(
       'alter default privileges in schema public, leaguemanager grant all on tables to apiuser;',
+    );
+    await queryRunner.query(
+      'alter default privileges in schema public, leaguemanager grant all on sequences to apiuser;',
     );
   }
 

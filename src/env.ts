@@ -16,9 +16,9 @@ export const env = {
   db: {
     type: process.env.DB_CONNECTION || 'postgres',
     host: process.env.DB_HOST || 'localhost',
-    port: portToNumber(process.env.DB_PORT) || 5432,
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
+    port: portToNumber(process.env.DB_PORT) || 5433,
+    username: process.env.DB_USERNAME || 'apiuser',
+    password: process.env.DB_PASSWORD || 'dbuser123',
+    database: process.env.DB_DATABASE || 'league',
   },
 };
