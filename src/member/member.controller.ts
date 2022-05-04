@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Patch,
@@ -32,5 +33,9 @@ export class MemberController {
   @Patch('/:id/status')
   patchMemberStatus(@Query('id') id: string) {
     this.memberService.patchMemberStatus(id);
+  }
+  @Delete('/:id')
+  deleteMember(@Query('id') id: string) {
+    this.memberService.deleteMember(id);
   }
 }
